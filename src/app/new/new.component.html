@@ -1,0 +1,51 @@
+<form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+  <div class="mb-3">
+    <label for="task" class="form-label">Task</label>
+    <input
+      type="text"
+      class="form-control"
+      id="task"
+      ngModel
+      name="task"
+      required=""
+    />
+
+    <label for="description" class="form-label mt-3">Description</label>
+    <input
+      type="text"
+      class="form-control mt-2"
+      id="description"
+      ngModel
+      name="description"
+      required=""
+    />
+    <!-- ngModel name is used to bind the input field to the component.ts -->
+
+    <label for="dueDate" class="form-label mt-3">Due Date</label>
+    <input
+      type="date"
+      class="form-control mt-2"
+      id="dueDate"
+      name="dueDate"
+      ngModel
+      required=""
+    />
+
+    <div
+      *ngIf="taskForm.invalid && taskForm.dirty"
+      id="errorMessage"
+      class="form-text text-danger mt-2"
+    >
+      Required field
+    </div>
+  </div>
+
+  <button
+    [disabled]="taskForm.invalid"
+    id="submitButton"
+    type="submit"
+    class="btn btn-primary"
+  >
+    Submit
+  </button>
+</form>

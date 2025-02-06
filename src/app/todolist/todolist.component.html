@@ -1,0 +1,37 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Task</th>
+        <th scope="col">Description</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Due</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of taskArray; index as i">
+        <td>{{ t.id }}</td>
+        <td>{{ t.title }}</td>
+        <td>{{ t.description }}</td>
+        <td>
+          <input
+            type="checkbox"
+            [checked]="t.completed"
+            (change)="onCheck(i)"
+          />
+        </td>
+        <td>{{ t.date }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(t.id)">
+            Delete
+          </button>
+        </td>
+        <td>
+          <a [routerLink]="['/todos', t.id]">View More</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
