@@ -12,34 +12,6 @@ export class NewComponent {
   // getting the task array from task service
   constructor(private taskService: TaskService) {}
 
-  // handling submit buttons
-  // onSubmit(form: NgForm) {
-  //   console.log(form)
-
-  //   // get data from form to task array
-  //   this.taskArray.push({
-  //     taskName: form.controls['task'].value,
-  //     description: form.controls['description'].value,
-  //     isCompleted: false,
-  //     dueDate: form.controls['dueDate'].value
-  //   })
-  //   // to clear the form after submit
-  //   form.resetForm()
-  // }
-
-  //getting the task array from task service
-  // onSubmit(form: NgForm) {
-  //   if (form.valid) {
-  //     this.taskService.addTask({
-  //       title: form.controls['task'].value,
-  //       description: form.controls['description'].value,
-  //       isCompleted: false,
-  //       dueDate: form.controls['dueDate'].value
-  //     });
-  //     form.resetForm();
-  //   }
-  // }
-
   // Submit the form to create a new task
   onSubmit(form: NgForm) {
     const newTask = new Task(
@@ -52,6 +24,35 @@ export class NewComponent {
     this.taskService.addTask(newTask).subscribe((response) => {
       // Handle success
     });
+    alert('Task added successfully');
     form.resetForm();
   }
 }
+
+// handling submit buttons
+// onSubmit(form: NgForm) {
+//   console.log(form)
+
+//   // get data from form to task array
+//   this.taskArray.push({
+//     taskName: form.controls['task'].value,
+//     description: form.controls['description'].value,
+//     isCompleted: false,
+//     dueDate: form.controls['dueDate'].value
+//   })
+//   // to clear the form after submit
+//   form.resetForm()
+// }
+
+//getting the task array from task service
+// onSubmit(form: NgForm) {
+//   if (form.valid) {
+//     this.taskService.addTask({
+//       title: form.controls['task'].value,
+//       description: form.controls['description'].value,
+//       isCompleted: false,
+//       dueDate: form.controls['dueDate'].value
+//     });
+//     form.resetForm();
+//   }
+// }

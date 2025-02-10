@@ -9,6 +9,9 @@ import { TodolistComponent } from './todolist/todolist.component';
 import { NewComponent } from './new/new.component';
 import { HeaderComponent } from './header/header.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -16,15 +19,17 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
     TodolistComponent,
     NewComponent,
     HeaderComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule // Add HttpClientModule to the imports array
+    HttpClientModule, // Add HttpClientModule to the imports array
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

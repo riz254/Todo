@@ -47,11 +47,8 @@ export class TaskService {
     return this.http.delete<void>(deleteUrl);
   }
 
-  // toggleTaskCompletion(index: number) {
-  //   console.log(this.taskArray);
-  //   this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
-  //   this.tasksSubject.next(this.taskArray);
-  // }
-
-  // return new Observable(); // Return an empty observable if the task is not found
+  toggleTaskCompletion(id: number): Observable<Task> {
+    const updateUrl = `${this.apiUrl}/${id}`;
+    return this.http.patch<Task>(updateUrl, { completed: true });
+  }
 }

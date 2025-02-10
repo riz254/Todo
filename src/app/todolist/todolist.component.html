@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let t of taskArray; index as i">
+      <tr *ngFor="let t of taskArray">
         <td>{{ t.id }}</td>
         <td>{{ t.title }}</td>
         <td>{{ t.description }}</td>
@@ -19,8 +19,11 @@
           <input
             type="checkbox"
             [checked]="t.completed"
-            (change)="onCheck(i)"
+            (change)="onCheck(t)"
           />
+          <button class="btn btn-success btn-sm" (click)="confirmUpdate(t)">
+            Confirm
+          </button>
         </td>
         <td>{{ t.date }}</td>
         <td>

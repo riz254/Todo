@@ -40,12 +40,36 @@ export class TodolistComponent {
     }
   }
 
-  onCheck(index: number) {
-    console.log(this.taskArray);
-
-    // to toggle the checkbox --change the value from false to true
-    this.taskArray[index].completed = !this.taskArray[index].completed;
+  onCheck(task: Task): void {
+    // Toggle the temporary completion state
+    task.completed = !task.completed;
   }
+
+  confirmUpdate(task: Task): void {
+    if (task.id !== undefined) {
+      // Prepare the updated task object
+      const updatedTask = { ...task, completed: task.completed };
+
+      // Send API request to update the task
+      this.taskService.toggleTaskCompletion(task.id).subscribe(
+        (response) => {
+          // Update taskArray with new values from response
+          this.taskArray = this.taskArray.map((t) =>
+            t.id === task.id ? response : t
+          );
+
+          // Show success notification (if MatSnackBar is used)
+          alert('Task completed successfully');
+        },
+        (error) => {
+          console.error('Error updating task:', error);
+        }
+      );
+    } else {
+      console.error('Task ID is undefined');
+    }
+  }
+
   // onCheck(index: number) {
   //   this.taskService.toggleTaskCompletion(index);
   // }

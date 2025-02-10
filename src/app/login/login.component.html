@@ -1,0 +1,37 @@
+<div class="container">
+  <form class="form">
+    <div class="head">
+      <h2 class="m-auto">Login</h2>
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">username</label>
+      <input
+        type="username"
+        class="form-control"
+        id="username"
+        [(ngModel)]="loginUserData.username"
+        name="username"
+        required
+      />
+
+      <label for="password" class="form-label mt-3">Password</label>
+      <input
+        type="password"
+        class="form-control mt-2"
+        id="password"
+        [(ngModel)]="loginUserData.password"
+        name="password"
+        required
+      />
+    </div>
+
+    <button
+      type="button"
+      id="submitButton"
+      class="btn btn-primary"
+      (click)="loginUser()"
+    >
+      Sign Up
+    </button>
+  </form>
+</div>
